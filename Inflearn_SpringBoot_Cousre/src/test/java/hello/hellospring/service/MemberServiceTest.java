@@ -11,13 +11,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class MemberServiceTest {
 
-    MemberService memberService = new MemberService();
+    MemberService memberService = new MemberService(memberRepository());
     MemoryMemberRepository memberRepository = new MemoryMemberRepository();
 
     @BeforeEach
     public void beforeEach(){
         memberRepository = new MemoryMemberRepository();
-        memberService = new MemberService();
+        memberService = new MemberService(memberRepository());
     }
 
     @AfterEach

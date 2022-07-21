@@ -10,11 +10,11 @@ import java.util.Optional;
 
 @Service
 public class MemberService {
-    private final MemberRepository memberRepository;
+    private MemberRepository memberRepository = null;
 
     @Autowired
-    public MemberService() {
-        this.memberRepository = memberRepository;
+    public MemberService(MemberRepository memberRepository) {
+        this.memberRepository = this.memberRepository;
     }
 
     /**
