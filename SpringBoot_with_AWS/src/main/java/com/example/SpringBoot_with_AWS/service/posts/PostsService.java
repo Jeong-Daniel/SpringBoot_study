@@ -2,6 +2,7 @@ package com.example.SpringBoot_with_AWS.service.posts;
 
 import com.example.SpringBoot_with_AWS.domain.posts.Posts;
 import com.example.SpringBoot_with_AWS.domain.posts.PostsRepository;
+import com.example.SpringBoot_with_AWS.web.dto.PostsListResponseDto;
 import com.example.SpringBoot_with_AWS.web.dto.PostsSaveRequestDto;
 import com.example.SpringBoot_with_AWS.web.dto.PostsUpdateRequestDto;
 import com.example.SpringBoot_with_AWS.web.dto.PostsResponseDto;
@@ -38,5 +39,12 @@ public class PostsService {
         new IllegalArgumentException("해당 사용자가 없습니다. id=" + id));
 
         return new PostsResponseDto(entity);
+    }
+
+    @Transactional(readOnly = true)
+    public List<PostsListResponseDto> findAllDesc(){
+        return postsRepository.findAllDesc().stream()
+                .map(PostsListResponseDto::new)
+                .collect(Collectors.toList());
     }
 }
